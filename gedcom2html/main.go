@@ -17,10 +17,10 @@ package main
 
 import (
 	"flag"
-	"github.com/elliotchance/gedcom"
-	"github.com/elliotchance/gedcom/html"
-	"github.com/elliotchance/gedcom/html/core"
-	"github.com/elliotchance/gedcom/util"
+	"github.com/jfbarthe/gedcom"
+	"github.com/jfbarthe/gedcom/html"
+	"github.com/jfbarthe/gedcom/html/core"
+	"github.com/jfbarthe/gedcom/util"
 	"log"
 	"os"
 )
