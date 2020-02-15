@@ -13,23 +13,11 @@ test-coverage:
 		fi \
 	done
 
-check-go-fmt:
-	exit $$(go fmt ./... | wc -l)
-
-check-ghost:
-	exit $$(ghost -max-line-complexity 2 -ignore-tests $$(find . -name "*.go" | grep -v vendor))
-
-checks: check-go-fmt check-ghost
-
 zip:
+	sed -i "s/unknown version/$(TRAVIS_TAG)/" cmd/gedcom/version.go
 	rm -rf bin
 	mkdir bin
-	go build -o bin/gedcom2html$(EXT) ./gedcom2html
-	go build -o bin/gedcom2json$(EXT) ./gedcom2json
-	go build -o bin/gedcom2text$(EXT) ./gedcom2text
-	go build -o bin/gedcomdiff$(EXT) ./gedcomdiff
-	go build -o bin/gedcomq$(EXT) ./gedcomq
-	go build -o bin/gedcomtune$(EXT) ./gedcomtune
-	zip gedcom-$(GOOS)-$(GOARCH).zip -r bin
+	go build -o bin/gedcom$(EXT) ./cmd/gedcom
+	zip gedcom-$(NAME).zip -r bin
 
 .PHONY: test zip
